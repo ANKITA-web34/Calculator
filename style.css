@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 html {
   box-sizing: border-box;
 }
@@ -6,4 +6,54 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  background: linear-gradient(to right, #02025a, #036580);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background: linear-gradient(to left, #02025a, #036580);
+  min-width: 280px; /*video:400px*/
+  width: 438px;
+  border-radius: 12px;
+  box-shadow: 0 5px 30px -5px rgba(200, 200, 200, 0.6);
+}
+
+/*display*/
+.calculator-display {
+  background: rgba(0, 0, 0, 0.253);
+  color: white;
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.calculator-display h1 {
+  margin: 0;
+  padding: 25px;
+  font-size: 45px;
+  font-family: Poiret One,'sans-serif';
+  letter-spacing: 8px;
+  font-weight: 300;
+  overflow-x: auto;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar h1{
+  width: 5px;
+}
+
+::-webkit-scrollbar-track h1 {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb h1 {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover h1{
+  background: #555;
 }
