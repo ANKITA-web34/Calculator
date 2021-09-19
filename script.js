@@ -20,27 +20,42 @@ function sendNumberValue(number) {
 function addDecimal() {
  //if operator pressed, don't addDecimal
  if(awaitingNextValue) return;
- 
+
  //if no decimal, add one
   if (!calculatorDisplay.textContent.includes(".")) {
     calculatorDisplay.textContent = `${calculatorDisplay.textContent}.`;
   }
 }
 
+//calculate the first and second values depanding on operator!
+const calulate = {
+    '/': (firstNumber, secondNumber) => firstNumber / secondNumber,
+    '+': (firstNumber, secondNumber) => firstNumber + secondNumber,
+    '-': (firstNumber, secondNumber) => firstNumber - secondNumber,
+    '*': (firstNumber, secondNumber) => firstNumber * secondNumber,
+    '=': (firstNumber, secondNumber) => secondNumber,
+};
+
 //operator
 function useOperator(operator) {
   const currentValue = Number(calculatorDisplay.textContent);
+  //prevent multipal operator  
+  if(operatorValue && awaitingNextValue) {
+    operatorValue = operator;  
+    return
+  };
+
   //assign firstValue if no value
   if (!firstValue) {
     firstValue = currentValue;
   } else {
-    console.log("currentValue:", currentValue);
+    const calculation = calulate[operatorValue](firstValue, currentValue);
+    calculatorDisplay.textContent = calculation;
+    firstValue = calculation;
   }
   //Ready for next value, store
   awaitingNextValue = true;
   operatorValue = operator;
-  console.log("first value:", firstValue);
-  console.log("operator value:", operatorValue);
 }
 
 inputBtns.forEach((inputBtn) => {
